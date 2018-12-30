@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EJEMPLOS DE TOASTR</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!--Dev Mode CSS Toastr-->
+    <link rel="stylesheet" href="./css/toastr.css">
+    <!--Prod Mode Toastr CSS
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"-->
+</head>
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <div class="col-sm-4">
+                <h1>Lista de Posts</h1>
+                <button type="submit" class="btn btn-primary" id="accion">
+                    <span class="glyphicon glyphicon-edit"></span>&nbsp;Acción
+                </button>
+                <input type="button" value="Error" id="error" />
+                <input type="button" value="Info" id="info" />
+                <input type="button" value="Warning" id="warning" />
+                <input type="button" value="Success" id="success" />
+
+            </div>
+            <div class="col-sm-4">
+                <h1>Listado de Álbumes</h1>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <!--Prod Mode>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script-->
+    <script src="./js/vue.js"></script>
+    <script src="./js/jquery-3.3.1.js"></script>
+    <script src="./js/vueComponent.js"></script>
+    <!--Prod Mode Toastr-->
+    <script src="./js/toastr.min.js"></script>
+
+        <script>
+            //Referencia Toastr: https://github.com/CodeSeven/toastr
+        $(document).ready(function() {
+            $('#accion').on('click',function () {
+                toastr.options.closeButton = true;
+                toastr.success('Registro eliminado!!');
+            });
+
+            $(function () {
+                $('#error').click(function () {
+                    // make it not dissappear
+                    toastr.error("Noooo oo oo ooooo!!!", "Title", {
+                            "timeOut": "0",
+                            "extendedTImeout": "0"
+                    });
+                });
+
+                $('#info').click(function () {
+                    // title is optional
+                    toastr.options.progressBar = true;
+                    toastr.info("Info Message", "Title");
+                });
+
+                $('#warning').click(function () {
+                    toastr.options.showEasing = 'swing';
+                    toastr.warning("Warning");
+                });
+
+                $('#success').click(function () {
+                    toastr.options.onclick = function() { 
+                        //console.log('clicked'); 
+                        alert ('Hiciste clic en el Toast');
+                    }
+                    toastr.success("Haz clic en MI");
+                });
+            });
+        });
+
+        </script>
+
+    
+</body>
+</html>
